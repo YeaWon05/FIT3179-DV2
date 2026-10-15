@@ -1,0 +1,127 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 400,
+  "title": {
+    "text": "Recreational Fishing Effort in Victoria by Survey Year",
+    "subtitle": "Total fisher days in each survey year",
+    "anchor": "middle",
+    "fontSize": 18,
+    "subtitleFontSize": 12
+  },
+
+  "data": {
+    "url": "lollipop_chart/data/fishing_days.csv",
+    "format": {"type": "csv"}
+  },
+
+  "transform": [
+    {
+      "calculate": "trim(datum['Survey Year'])",
+      "as": "Year"
+    },
+    {
+      "calculate": "toNumber(replace(trim(datum['Fisher Days']), regexp(',', 'g'), ''))",
+      "as": "Days"
+    },
+    {
+      "joinaggregate": [
+        {"op": "max", "field": "Days", "as": "MaxDays"},
+        {"op": "min", "field": "Days", "as": "MinDays"}
+      ]
+    },
+    {
+      "calculate": "datum.Days === datum.MaxDays ? 'Highest' : datum.Days === datum.MinDays ? 'Lowest' : 'Other'",
+      "as": "Highlight"
+    }
+  ],
+
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Survey Year",
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "Days",
+      "type": "quantitative",
+      "title": "Fisher Days",
+      "scale": {"domain": [0, 3000]},
+      "axis": {
+        "format": ",",
+        "grid": true,
+        "gridColor": "#eeeeee"
+      }
+    }
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "color": "#1f77b4"
+      },
+      "encoding": {
+        "y2": {"datum": 0}
+      }
+    },
+
+    {
+      "mark": {
+        "type": "circle",
+        "size": 500,
+        "stroke": "white",
+        "strokeWidth": 2,
+        "opacity": 1
+      },
+      "encoding": {
+        "color": {
+          "field": "Highlight",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Highest", "Lowest", "Other"],
+            "range": ["#59a14f", "#e15759", "#1f77b4"]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "type": "nominal",
+            "title": "Survey Year"
+          },
+          {
+            "field": "Days",
+            "type": "quantitative",
+            "title": "Fisher Days",
+            "format": ","
+          }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "dy": -22,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#1f4e79"
+      },
+      "encoding": {
+        "text": {
+          "field": "Days",
+          "type": "quantitative",
+          "format": ","
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"grid": false}
+  }
+}
