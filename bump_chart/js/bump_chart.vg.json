@@ -1,0 +1,268 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 450,
+
+  "title": {
+    "text": "Ranking of Recreational Fish Species by Total Catch in NSW",
+    "subtitle": "Species ranked by estimated total catch in each survey period",
+    "anchor": "middle",
+    "fontSize": 18,
+    "subtitleFontSize": 12
+  },
+
+  "data": {
+    "url": "bump_chart/data/fishing_species_catch_nsw.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Total": "number"
+      }
+    }
+  },
+
+  "transform": [
+    {
+      "calculate": "trim(datum.Year)",
+      "as": "Year"
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "Rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "Total",
+          "order": "descending"
+        }
+      ],
+      "groupby": ["Year"]
+    }
+  ],
+
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Survey Period",
+      "sort": [
+        "2013/14",
+        "2017/18",
+        "2019/20",
+        "2021/22",
+        "2023/24"
+      ],
+      "scale": {
+        "padding": 0.3
+      },
+      "axis": {
+        "labelAngle": 0,
+        "labelPadding": 12,
+        "labelFontSize": 12,
+        "titlePadding": 18,
+        "orient": "top",
+        "domain": false,
+        "ticks": false
+      }
+    },
+
+    "y": {
+      "field": "Rank",
+      "type": "quantitative",
+      "title": null,
+      "scale": {
+        "domain": [1, 7],
+        "reverse": true,
+        "nice": false,
+        "zero": false
+      },
+      "axis": {
+        "labels": false,
+        "ticks": false,
+        "domain": false,
+        "grid": true,
+        "gridOpacity": 0.15
+      }
+    },
+
+    "color": {
+      "field": "Species",
+      "type": "nominal",
+      "scale": {
+        "scheme": "tableau10"
+      },
+      "legend": null
+    }
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "opacity": 0.8,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "detail": {
+          "field": "Species",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 300,
+        "opacity": 1,
+        "stroke": "white",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "Species",
+            "type": "nominal",
+            "title": "Species"
+          },
+          {
+            "field": "Year",
+            "type": "nominal",
+            "title": "Survey Period"
+          },
+          {
+            "field": "Rank",
+            "type": "quantitative",
+            "title": "Rank"
+          },
+          {
+            "field": "Total",
+            "type": "quantitative",
+            "title": "Total Caught",
+            "format": ","
+          }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "color": "white",
+        "fontWeight": "bold",
+        "fontSize": 11
+      },
+      "encoding": {
+        "text": {
+          "field": "Rank",
+          "type": "quantitative"
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.Year == '2013/14'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -18,
+        "fontSize": 11,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "Species",
+          "type": "nominal"
+        },
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "sort": [
+            "2013/14",
+            "2017/18",
+            "2019/20",
+            "2021/22",
+            "2023/24"
+          ],
+          "scale": {
+            "padding": 0.3
+          }
+        },
+        "y": {
+          "field": "Rank",
+          "type": "quantitative",
+          "scale": {
+            "domain": [1, 7],
+            "reverse": true,
+            "nice": false,
+            "zero": false
+          }
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.Year == '2023/24'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 18,
+        "fontSize": 11,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "Species",
+          "type": "nominal"
+        },
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "sort": [
+            "2013/14",
+            "2017/18",
+            "2019/20",
+            "2021/22",
+            "2023/24"
+          ],
+          "scale": {
+            "padding": 0.3
+          }
+        },
+        "y": {
+          "field": "Rank",
+          "type": "quantitative",
+          "scale": {
+            "domain": [1, 7],
+            "reverse": true,
+            "nice": false,
+            "zero": false
+          }
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "grid": false
+    }
+  }
+}
