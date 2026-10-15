@@ -1,16 +1,8 @@
-
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
   "height": 450,
 
-  "title": {
-    "text": "Ranking of Recreational Fish Species by Total Catch in NSW",
-    "subtitle": "Species ranked by estimated total catch in each survey period",
-    "anchor": "middle",
-    "fontSize": 18,
-    "subtitleFontSize": 12
-  },
 
   "data": {
     "url": "bump_chart/data/fishing_species_catch_nsw.csv",

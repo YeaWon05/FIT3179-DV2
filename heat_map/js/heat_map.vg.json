@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 600,
   "height": 400,
-  "title": "Estimated Recreational Fish Harvest by State and Species",
+
   "data": {
     "url": "heat_map/data/harvest_fish.csv",
     "format": {

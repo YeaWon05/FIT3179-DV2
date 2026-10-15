@@ -2,13 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 600,
   "height": 400,
-  "title": {
-    "text": "Recreational Fishing Effort in Victoria by Survey Year",
-    "subtitle": "Total fisher days in each survey year",
-    "anchor": "middle",
-    "fontSize": 18,
-    "subtitleFontSize": 12
-  },
 
   "data": {
     "url": "lollipop_chart/data/fishing_days.csv",

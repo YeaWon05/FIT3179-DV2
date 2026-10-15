@@ -2,13 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 520,
   "height": 520,
-  "title": {
-    "text": "Share of Recreational Fishing Effort by Waterbody",
-    "subtitle": "Proportion of recreational fishing licence households' fishing effort (fisher days)",
-    "anchor": "middle",
-    "fontSize": 18,
-    "subtitleFontSize": 12
-  },
+
   "layer": [
     {
       "data": {"sequence": {"start": 10, "stop": 60, "step": 10, "as": "level"}},

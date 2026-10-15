@@ -1,10 +1,5 @@
-
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Recreational Fish Catch: Kept vs. Released",
-    "subtitle": "Estimated catch by species in NSW, 2021–22"
-  },
   "width": 650,
   "height": 400,
   "data": {

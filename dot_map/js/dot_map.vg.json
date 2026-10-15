@@ -1,13 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-  "title": {
-    "text": "Recreational Fishing Locations in Victoria by Fish Species",
-    "fontSize": 18,
-    "anchor": "middle",
-    "offset": 15
-  },
-
   "data": {
     "url": "dot_map/data/fishing_location_top_6.csv",
     "format": {"type": "csv"}
