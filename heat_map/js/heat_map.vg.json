@@ -4,7 +4,7 @@
   "height": 400,
   "title": "Estimated Recreational Fish Harvest by State and Species",
   "data": {
-    "url": "heat_map/data/fish_harvest.csv",
+    "url": "heat_map/data/harvest_fish.csv",
     "format": {
       "type": "csv"
     }
