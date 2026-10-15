@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Fishing and Recreational Angling in Australia</title>
+    <title>Fishing and Recreational Angling in Australia | Visualisations</title>
 
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
@@ -11,26 +12,135 @@
         href="https://unpkg.com/purecss@2.0.3/build/pure-min.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+
     <div class="page">
+
         <h1>Fishing and Recreational Angling in Australia</h1>
+
+        <p>
+            This visualisation explores recreational fishing across Australia.
+            It examines participation, catch, locations, species, and fishing effort.
+        </p>
+
         <hr>
 
         <h2>1. Recreational Fishing Participation Across Australia</h2>
-        <div id="vis1"></div>
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <div id="vis1" class="vis-container"></div>
+            </div>
+        </div>
+
+        <br>
+        <hr class="hr3">
 
         <h2>2. Recreational Fishing Catch by Region in Queensland</h2>
-        <div id="vis2"></div>
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <div id="vis2" class="vis-container"></div>
+            </div>
+        </div>
+
+        <br>
+        <hr class="hr3">
+
+        <h2>3. Recreational Fishing Locations in Victoria</h2>
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <div id="vis3" class="vis-container"></div>
+            </div>
+        </div>
+
+        <br>
+        <hr class="hr3">
+
+        <h2>4. Estimated Recreational Fish Catch by State and Species</h2>
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <div id="vis4" class="vis-container"></div>
+            </div>
+        </div>
+
+        <br>
+        <hr class="hr3">
+
+        <h2>5. Estimated Catch by Species in NSW</h2>
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <div id="vis5" class="vis-container"></div>
+            </div>
+        </div>
+
+        <br>
+        <hr class="hr3">
+
+        <h2>6. Recreational Fishing Effort by Waterbody Type</h2>
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <div id="vis6" class="vis-container"></div>
+            </div>
+        </div>
+
+        <br>
+        <hr class="hr3">
+
+        <h2>7. Changes in Recreational Fish Catch by Species</h2>
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <div id="vis7" class="vis-container"></div>
+            </div>
+        </div>
+
+        <br>
+        <hr class="hr3">
+
+        <h2>8. Recreational Fishing Effort by Survey Year</h2>
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <div id="vis8" class="vis-container"></div>
+            </div>
+        </div>
+
+        <hr class="hr3">
+
     </div>
 
     <script>
+
         var specVis1 = "choropleth_map/js/choropleth_map.vg.json";
         vegaEmbed('#vis1', specVis1);
 
         var specVis2 = "proportional_symbol_map/js/proportional_symbol_map.vg.json";
         vegaEmbed('#vis2', specVis2);
+
+        var specVis3 = "dot_map/js/dot_map.vg.json";
+        vegaEmbed('#vis3', specVis3);
+
+        var specVis4 = "heat_map/js/heat_map.vg.json";
+        vegaEmbed('#vis4', specVis4);
+
+        var specVis5 = "dumbbell_plot/js/dumbbell_plot.vg.json";
+        vegaEmbed('#vis5', specVis5);
+
+        var specVis6 = "radar_chart/js/radar_chart.vg.json";
+        vegaEmbed('#vis6', specVis6);
+
+        var specVis7 = "bump_chart/js/bump_chart.vg.json";
+        vegaEmbed('#vis7', specVis7);
+
+        var specVis8 = "lollipop_chart/js/lollipop_chart.vg.json";
+        vegaEmbed('#vis8', specVis8);
+
     </script>
+
 </body>
+
 </html>
